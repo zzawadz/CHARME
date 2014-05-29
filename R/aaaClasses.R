@@ -8,6 +8,5 @@ setClass("CHARMESPEC",
 #'  @export
 #'  
 setClass("CHARME", 
-         representation=c(regime = "numeric",
-                          spec   = "list",
-                          mat    = "matrix"), contains="numeric")
+         representation=c(spec = "CHARMESPEC",
+                          regime = "numeric"), contains="numeric")

@@ -27,8 +27,15 @@ createTransMatrix = function(dim = 2, prob = 0.01)
 defaultModelsList = function()
 {
   spec1 = garchSpec(model = list(omega=0.10, mu= 0, ar = 0.7, alpha = 0.1, beta = 0.75), cond.dist = "std")
-  spec2 = garchSpec(model = list(omega=0.10, mu= 0, ar = 0.1, alpha = 0.1, beta = 0.75), cond.dist = "std")
+  spec2 = garchSpec(model = list(omega=0.10, mu= 2, ar = 0.1, alpha = 0.1, beta = 0.75), cond.dist = "std")
   
   createModelsList(spec1, spec2)
 }
+
+########## addAlphaToColor ##################
+addAlphaToColor <- function(col, alpha=1){
+  apply(sapply(col, col2rgb)/255, 2, function(x) 
+    rgb(x[1], x[2], x[3], alpha=alpha))  
+}
+
 
