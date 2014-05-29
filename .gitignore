@@ -1,5 +1,7 @@
 # History files
 .Rhistory
+.Rproj.*
+man/*
 
 # Example code in package build process
 *-Ex.R
