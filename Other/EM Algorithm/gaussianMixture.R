@@ -5,6 +5,17 @@ nn = 100
 x1 = mvrnorm(nn, c(0,3), diag(2))
 x2 = mvrnorm(nn, c(-2,-1), cbind(c(2,1),c(1,2)))
 x = rbind(x1,x2)
+
+
+x1 = arima.sim(list(ar = 0.6),n = nn+1, mean = 0.2)
+x2 = arima.sim(list(ar = -0.6),n = nn+1, mean = -1)
+y1 = x1[-1]; y2 = x2[-1]
+x1 = x1[-(nn+1)]; x2 = x2[-(nn+1)]
+
+x = c(x1,x2)
+y = c(y1,y2)
+x = cbind(x,y)
+
 cols = c(rep(1,nn), rep(2,nn))
 
 plot(x, col = cols, pch  = 19)
@@ -54,7 +65,7 @@ addEllipses = function(center, cov, radius = seq(0.5,2,0.5), col)
 sapply(1:2, function(i) addEllipses(means[,i],covs[[i]],col = i+2))
 
 
-for(i in 1:5)
+for(i in 1:20)
 {
   ll1 = getLE(x,means[,1], covs[[1]]) * denw[1]
   ll2 = getLE(x,means[,2], covs[[2]]) * denw[2]
